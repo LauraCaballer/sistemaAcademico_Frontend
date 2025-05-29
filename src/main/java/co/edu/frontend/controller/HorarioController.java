@@ -27,7 +27,7 @@ public class HorarioController {
 
         // Atributos comunes para el layout (barra superior, menú lateral)
         // El JSP usa "Juan David" de forma estática, pero pasamos el de sesión por si se actualiza el JSP
-        model.addAttribute("sessionUserName", loggedInUser.getNombre());
+        //model.addAttribute("sessionUserName", loggedInUser.getNombre());
         // model.addAttribute("sessionUserRol", loggedInUser.getRol()); // Si fuera necesario
 
         // Para mantener la visualización actual del JSP que tiene "Juan David" hardcodeado

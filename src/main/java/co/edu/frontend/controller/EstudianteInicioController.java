@@ -20,7 +20,7 @@ public class EstudianteInicioController {
      */
     @GetMapping("/dashboard") // You can change "/dashboard" to "/informacion" or any preferred path
     public String mostrarPaginaEstudiante(HttpSession session, Model model) {
-        LoginResponse loggedInUser = (LoginResponse) session.getAttribute("usuario");
+        LoginResponse loggedInUser = (LoginResponse) session.getAttribute("username");
 
         // Check if user is logged in, similar to LoginController's dashboard
         if (loggedInUser == null) {
@@ -31,8 +31,8 @@ public class EstudianteInicioController {
         // Your JSP currently hardcodes names like "Juan David".
         // If you update your JSP to use these model attributes, they will be dynamic.
         // For example, the top bar user name could use ${sessionUserName}
-        model.addAttribute("sessionUserName", loggedInUser.getNombre());
-        model.addAttribute("sessionUserRol", loggedInUser.getRol());
+        //model.addAttribute("sessionUserName", loggedInUser.getNombre());
+        //model.addAttribute("sessionUserRol", loggedInUser.getRol());
 
         // Add detailed student information to the model.
         // Your JSP has this data hardcoded. Providing it here allows for future dynamicity.

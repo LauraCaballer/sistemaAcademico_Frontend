@@ -26,7 +26,7 @@ public class PensumController {
         }
 
         // Atributos comunes para la plantilla (barra superior, menú lateral)
-        model.addAttribute("sessionUserName", loggedInUser.getNombre());
+        //model.addAttribute("sessionUserName", loggedInUser.getNombre());
         // El JSP actualmente usa "Juan David" estático, lo pasamos por si se actualiza.
         model.addAttribute("displayUserName", "Juan David");
 

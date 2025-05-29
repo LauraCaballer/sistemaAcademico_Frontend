@@ -1,0 +1,577 @@
+/* ============================================================
+   HISTORIAL ACADÉMICO - CSS ESPECÍFICO PARA ESTUDIANTES
+   ============================================================ */
+
+/* Variables CSS para el módulo de estudiantes */
+:root {
+    /* Colores principales - rojo como el administrativo */
+    --student-primary: #dc2626;
+    --student-primary-dark: #b91c1c;
+    --student-primary-light: #f87171;
+    --student-bg: #fef2f2;
+    --student-bg-light: #ffe8e8;
+
+    /* Colores de estado académico */
+    --estado-aprobado: #22c55e;
+    --estado-reprobado: #ef4444;
+    --estado-cursando: #3b82f6;
+    --estado-cancelado: #f59e0b;
+
+    /* Colores neutros */
+    --dark-bg: #1a1a1a;
+    --dark-secondary: #2d2d2d;
+    --text-light: #e5e5e5;
+    --text-gray: #6b7280;
+    --text-dark: #374151;
+    --border-light: rgba(255,255,255,0.1);
+    --shadow-color: rgba(0,0,0,0.1);
+
+    /* Espaciado */
+    --nav-width: 250px;
+    --border-radius: 15px;
+    --border-radius-lg: 20px;
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 2.5rem;
+}
+
+/* ============================================================
+   RESET Y BASE
+   ============================================================ */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--student-bg) 0%, var(--student-bg-light) 100%);
+    overflow: hidden;
+}
+
+/* ============================================================
+   NAVEGACIÓN LATERAL - MÓDULO ESTUDIANTE
+   ============================================================ */
+.sidebar {
+    width: var(--nav-width);
+    background: linear-gradient(180deg, var(--dark-bg) 0%, var(--dark-secondary) 50%, var(--dark-bg) 100%);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.15);
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.sidebar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(220, 38, 38, 0.05) 0%, transparent 50%, rgba(220, 38, 38, 0.05) 100%);
+    pointer-events: none;
+}
+
+.sidebar h4 {
+    text-align: center;
+    padding: var(--spacing-md) var(--spacing-sm);
+    margin: 0;
+    border-bottom: 2px solid rgba(220, 38, 38, 0.3);
+    font-size: 1.2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--student-primary) 0%, var(--student-primary-dark) 100%);
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    position: relative;
+    z-index: 1;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.sidebar ul li {
+    border-bottom: 1px solid var(--border-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, var(--student-primary) 0%, var(--student-primary-dark) 100%);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.sidebar ul li:hover::before {
+    transform: scaleY(1);
+}
+
+.sidebar ul li a {
+    display: block;
+    padding: var(--spacing-sm) var(--spacing-md);
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    font-size: 0.9rem;
+    letter-spacing: 0.3px;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a[style*="font-weight:bold"] {
+    background: linear-gradient(90deg, rgba(220, 38, 38, 0.1) 0%, rgba(220, 38, 38, 0.05) 100%);
+    color: #ffffff;
+    padding-left: var(--spacing-lg);
+    transform: translateX(4px);
+}
+
+/* Estilo para sublistas */
+.sidebar ul ul {
+    background: rgba(0,0,0,0.2);
+    border-top: 1px solid var(--border-light);
+    margin-left: var(--spacing-sm);
+}
+
+.sidebar ul ul li {
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.sidebar ul ul li a {
+    padding-left: var(--spacing-xl);
+    font-size: 0.85rem;
+    color: rgba(229, 229, 229, 0.8);
+    margin-bottom: var(--spacing-xs);
+}
+
+.sidebar ul ul li a:hover,
+.sidebar ul ul li a[style*="font-weight:bold"] {
+    color: #ffffff;
+    background: linear-gradient(90deg, rgba(220, 38, 38, 0.15) 0%, rgba(220, 38, 38, 0.08) 100%);
+}
+
+/* Botón de cerrar sesión */
+.logout-button {
+    margin-top: auto;
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%) !important;
+    color: white !important;
+    text-align: center;
+    font-weight: 600;
+    border-top: 1px solid var(--border-light);
+}
+
+.logout-button:hover {
+    background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%) !important;
+    transform: none !important;
+    padding-left: var(--spacing-md) !important;
+}
+
+/* ============================================================
+   ÁREA DE CONTENIDO PRINCIPAL
+   ============================================================ */
+.main-content {
+    flex: 1;
+    margin-left: var(--nav-width);
+    padding: 0;
+    overflow-y: auto;
+    background: linear-gradient(135deg, var(--student-bg) 0%, var(--student-bg-light) 100%);
+    min-height: 100vh;
+}
+
+/* ============================================================
+   HEADER DE PÁGINA
+   ============================================================ */
+.header-section {
+    background: linear-gradient(135deg, var(--student-primary) 0%, var(--student-primary-dark) 100%);
+    color: white;
+    padding: var(--spacing-lg);
+    box-shadow: 0 4px 20px rgba(220, 38, 38, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.header-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="25" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="25" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
+    opacity: 0.1;
+}
+
+.main-content h3 {
+    background: linear-gradient(135deg, var(--student-primary) 0%, var(--student-primary-dark) 100%);
+    color: white;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 0 var(--spacing-lg) 0;
+    padding: var(--spacing-lg);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(220, 38, 38, 0.3);
+    margin-bottom: var(--spacing-lg);
+}
+
+.main-content h3::before {
+    content: '📚';
+    margin-right: var(--spacing-sm);
+    font-size: 1.5rem;
+}
+
+/* ============================================================
+   CONTENIDO DEL HISTORIAL
+   ============================================================ */
+.main-content > div:not(:first-child) {
+    padding: var(--spacing-lg) var(--spacing-xl);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* ============================================================
+   MENSAJES DE ERROR
+   ============================================================ */
+.error-message {
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+    color: #dc2626;
+    border: 2px solid #f87171;
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    box-shadow: 0 8px 32px rgba(220, 38, 38, 0.1);
+    position: relative;
+    font-weight: 600;
+}
+
+.error-message::before {
+    content: '⚠';
+    margin-right: var(--spacing-xs);
+    font-size: 1.2rem;
+}
+
+/* ============================================================
+   TABLA DE HISTORIAL ACADÉMICO
+   ============================================================ */
+.table-container {
+    background: white;
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: 0 20px 60px var(--shadow-color);
+    border: 1px solid rgba(220, 38, 38, 0.1);
+    margin-bottom: var(--spacing-xl);
+}
+
+table {
+    width: 100%;
+    margin: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.9em;
+}
+
+table thead th {
+    background: linear-gradient(135deg, var(--student-primary) 0%, var(--student-primary-dark) 100%);
+    color: white;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 1.2rem 1rem;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    text-align: left;
+}
+
+table tbody tr {
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(220, 38, 38, 0.1);
+}
+
+table tbody tr:hover {
+    background: linear-gradient(135deg, rgba(254, 242, 242, 0.8) 0%, rgba(255, 232, 232, 0.5) 100%);
+    transform: scale(1.01);
+}
+
+table tbody tr:nth-child(even) {
+    background-color: rgba(254, 242, 242, 0.3);
+}
+
+table tbody tr:nth-child(even):hover {
+    background: linear-gradient(135deg, rgba(254, 242, 242, 0.9) 0%, rgba(255, 232, 232, 0.6) 100%);
+    transform: scale(1.01);
+}
+
+table tbody td {
+    padding: 1.5rem 1.2rem;
+    vertical-align: middle;
+    border: none;
+    font-size: 0.95rem;
+    text-align: left;
+}
+
+/* ============================================================
+   ESTADOS ACADÉMICOS
+   ============================================================ */
+.estado-Aprobado {
+    color: var(--estado-aprobado) !important;
+    font-weight: bold !important;
+    background: rgba(34, 197, 94, 0.1);
+    padding: 4px 12px;
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    display: inline-block;
+}
+
+.estado-Aprobado::before {
+    content: '✅ ';
+    margin-right: 4px;
+}
+
+.estado-Reprobado {
+    color: var(--estado-reprobado) !important;
+    font-weight: bold !important;
+    background: rgba(239, 68, 68, 0.1);
+    padding: 4px 12px;
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    display: inline-block;
+}
+
+.estado-Reprobado::before {
+    content: '❌ ';
+    margin-right: 4px;
+}
+
+.estado-Cursando {
+    color: var(--estado-cursando) !important;
+    font-weight: bold;
+    background: rgba(59, 130, 246, 0.1);
+    padding: 4px 12px;
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    display: inline-block;
+}
+
+.estado-Cursando::before {
+    content: '📖 ';
+    margin-right: 4px;
+}
+
+.estado-Cancelado {
+    color: var(--estado-cancelado) !important;
+    font-weight: bold;
+    background: rgba(245, 158, 11, 0.1);
+    padding: 4px 12px;
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    display: inline-block;
+}
+
+.estado-Cancelado::before {
+    content: '⏸ ';
+    margin-right: 4px;
+}
+
+/* ============================================================
+   MENSAJE DE ESTADO VACÍO
+   ============================================================ */
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-gray);
+    background: white;
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 8px 32px var(--shadow-color);
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-lg);
+}
+
+.empty-state::before {
+    content: '📋';
+    font-size: 4rem;
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    opacity: 0.5;
+}
+
+.empty-state p {
+    font-size: 1.1rem;
+    margin: 0;
+    color: var(--text-dark);
+}
+
+/* ============================================================
+   BOTONES DE ACCIÓN
+   ============================================================ */
+.action-button {
+    background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(108, 117, 125, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-family: inherit;
+    margin-top: var(--spacing-xl);
+}
+
+.action-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(108, 117, 125, 0.4);
+    color: white;
+    text-decoration: none;
+    background: linear-gradient(135deg, #5a6268 0%, #495057 100%);
+}
+
+.action-button::before {
+    content: '← ';
+    font-weight: bold;
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN
+   ============================================================ */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        flex-direction: row;
+        overflow-x: auto;
+    }
+
+    .sidebar ul {
+        display: flex;
+        width: max-content;
+    }
+
+    .sidebar ul li {
+        border-bottom: none;
+        border-right: 1px solid var(--border-light);
+        min-width: 120px;
+    }
+
+    .sidebar ul ul {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: var(--dark-bg);
+        width: 200px;
+        display: none;
+    }
+
+    .sidebar ul li:hover ul {
+        display: block;
+    }
+
+    .main-content {
+        margin-left: 0;
+        height: calc(100vh - 80px);
+    }
+
+    .main-content > div:not(:first-child) {
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+
+    .main-content h3 {
+        font-size: 1.5rem;
+        padding: var(--spacing-md);
+    }
+
+    .table-container {
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 800px;
+    }
+
+    table tbody td {
+        padding: 1rem 0.8rem;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content h3 {
+        font-size: 1.2rem;
+        padding: var(--spacing-sm);
+    }
+
+    .action-button {
+        padding: 10px 16px;
+        font-size: 0.85rem;
+        width: 100%;
+        justify-content: center;
+    }
+
+    table {
+        min-width: 600px;
+    }
+
+    .estado-Aprobado, .estado-Reprobado, .estado-Cursando, .estado-Cancelado {
+        font-size: 0.8rem;
+        padding: 3px 8px;
+    }
+}
+
+/* ============================================================
+   ANIMACIONES
+   ============================================================ */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slide-in {
+    animation: slideIn 0.3s ease-out;
+}
+
+/* Aplicar animaciones a elementos principales */
+.table-container {
+    animation: fadeIn 0.6s ease-out;
+}
+
+.sidebar {
+    animation: slideIn 0.4s ease-out;
+}
