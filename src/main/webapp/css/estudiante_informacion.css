@@ -1,0 +1,553 @@
+/* ============================================================
+   INFORMACIÓN DE PERSONA - CSS ESPECÍFICO PARA ESTUDIANTES
+   ============================================================ */
+
+/* Variables CSS coherentes con el sistema */
+:root {
+    /* Colores principales - rojo como el sistema académico */
+    --student-primary: #dc2626;
+    --student-primary-dark: #b91c1c;
+    --student-primary-light: #f87171;
+    --student-bg: #fef2f2;
+    --student-bg-light: #ffe8e8;
+
+    /* Colores neutros */
+    --dark-bg: #1a1a1a;
+    --dark-secondary: #2d2d2d;
+    --text-light: #e5e5e5;
+    --text-gray: #6b7280;
+    --text-dark: #374151;
+    --border-light: rgba(255,255,255,0.1);
+    --shadow-color: rgba(0,0,0,0.1);
+
+    /* Espaciado */
+    --nav-width: 250px;
+    --border-radius: 15px;
+    --border-radius-lg: 20px;
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 2.5rem;
+}
+
+/* ============================================================
+   RESET Y BASE
+   ============================================================ */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--student-bg) 0%, var(--student-bg-light) 100%);
+    min-height: 100vh;
+    padding: 0;
+}
+
+/* ============================================================
+   ESTRUCTURA DE CONTENEDOR PRINCIPAL
+   ============================================================ */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.col-md-8,
+.col-lg-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 0 15px;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+/* ============================================================
+   TARJETA PRINCIPAL DE INFORMACIÓN
+   ============================================================ */
+.card {
+    background: white;
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 20px 60px var(--shadow-color);
+    border: 2px solid rgba(220, 38, 38, 0.1);
+    overflow: hidden;
+    margin-bottom: var(--spacing-xl);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 30px 80px rgba(220, 38, 38, 0.15);
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--student-primary) 0%, var(--student-primary-dark) 100%);
+}
+
+/* ============================================================
+   HEADER DE LA TARJETA
+   ============================================================ */
+.card-header {
+    background: linear-gradient(135deg, var(--student-primary) 0%, var(--student-primary-dark) 100%);
+    color: white;
+    padding: var(--spacing-lg);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="25" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="25" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
+    opacity: 0.1;
+}
+
+.card-header h4 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+}
+
+.card-header .fas {
+    font-size: 2rem;
+    opacity: 0.9;
+}
+
+/* ============================================================
+   CUERPO DE LA TARJETA
+   ============================================================ */
+.card-body {
+    padding: var(--spacing-xl);
+    background: linear-gradient(135deg, rgba(254, 242, 242, 0.3) 0%, white 50%, rgba(255, 232, 232, 0.2) 100%);
+}
+
+/* ============================================================
+   FILAS DE INFORMACIÓN
+   ============================================================ */
+.info-row {
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    background: white;
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.05);
+    border-left: 4px solid var(--student-primary-light);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.info-row:hover {
+    transform: translateX(5px);
+    box-shadow: 0 8px 25px rgba(220, 38, 38, 0.1);
+    border-left-color: var(--student-primary);
+}
+
+.info-row::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, var(--student-primary) 0%, var(--student-primary-light) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.info-row:hover::before {
+    opacity: 1;
+}
+
+.info-row .row {
+    align-items: center;
+    margin: 0;
+}
+
+.info-row .col-4,
+.info-row .col-8 {
+    padding: 0;
+}
+
+/* ============================================================
+   ETIQUETAS Y VALORES
+   ============================================================ */
+.info-label {
+    font-weight: 700;
+    color: var(--student-primary-dark);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+}
+
+.info-label .icon {
+    font-size: 1.2em;
+    color: var(--student-primary);
+    margin-right: var(--spacing-xs);
+    width: 20px;
+    text-align: center;
+}
+
+.info-value {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    font-weight: 500;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+.info-value a {
+    color: var(--student-primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.info-value a:hover {
+    color: var(--student-primary-dark);
+    text-decoration: underline;
+}
+
+.empty-value {
+    color: var(--text-gray);
+    font-style: italic;
+    opacity: 0.8;
+}
+
+/* ============================================================
+   ICONOS DE GÉNERO
+   ============================================================ */
+.fa-mars {
+    color: #3b82f6 !important;
+}
+
+.fa-venus {
+    color: #ec4899 !important;
+}
+
+/* ============================================================
+   MENSAJE DE ERROR
+   ============================================================ */
+.text-center.py-4 {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-gray);
+}
+
+.fa-exclamation-triangle {
+    color: #f59e0b !important;
+    font-size: 4rem !important;
+    margin-bottom: var(--spacing-lg);
+    opacity: 0.6;
+}
+
+.text-muted {
+    color: var(--text-gray) !important;
+}
+
+/* ============================================================
+   PIE DE LA TARJETA
+   ============================================================ */
+.card-footer {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-top: 2px solid rgba(220, 38, 38, 0.1);
+    padding: var(--spacing-lg);
+}
+
+.card-footer .row {
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.card-footer .col-6 {
+    flex: 1;
+}
+
+.text-end {
+    text-align: right;
+}
+
+/* ============================================================
+   BOTONES
+   ============================================================ */
+.btn {
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: inherit;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    text-decoration: none;
+}
+
+.btn-outline-primary {
+    background: linear-gradient(135deg, var(--student-primary) 0%, var(--student-primary-dark) 100%);
+    color: white;
+    border: 2px solid var(--student-primary);
+}
+
+.btn-outline-primary:hover {
+    background: linear-gradient(135deg, var(--student-primary-dark) 0%, #991b1b 100%);
+    color: white;
+}
+
+.btn-outline-secondary {
+    background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+    color: white;
+    border: 2px solid #6c757d;
+}
+
+.btn-outline-secondary:hover {
+    background: linear-gradient(135deg, #5a6268 0%, #495057 100%);
+    color: white;
+}
+
+.btn-sm {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+}
+
+/* Botón de historial adicional */
+.action-button {
+    background: linear-gradient(135deg, var(--student-primary) 0%, var(--student-primary-dark) 100%);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.action-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4);
+    color: white;
+    text-decoration: none;
+    background: linear-gradient(135deg, var(--student-primary-dark) 0%, #991b1b 100%);
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN
+   ============================================================ */
+@media (min-width: 768px) {
+    .col-md-8 {
+        flex: 0 0 66.666667%;
+        max-width: 66.666667%;
+    }
+}
+
+@media (min-width: 992px) {
+    .col-lg-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: var(--spacing-md);
+    }
+
+    .card-header h4 {
+        font-size: 1.5rem;
+    }
+
+    .card-body {
+        padding: var(--spacing-lg);
+    }
+
+    .info-row {
+        margin-bottom: var(--spacing-md);
+        padding: var(--spacing-sm);
+    }
+
+    .info-row .col-4,
+    .info-row .col-8 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .info-label {
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .card-footer .row {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    .card-footer .col-6 {
+        width: 100%;
+        text-align: center !important;
+    }
+
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-header {
+        padding: var(--spacing-md);
+    }
+
+    .card-header h4 {
+        font-size: 1.3rem;
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+
+    .card-body {
+        padding: var(--spacing-md);
+    }
+
+    .info-row {
+        padding: var(--spacing-sm);
+    }
+
+    .info-label {
+        font-size: 0.85rem;
+    }
+
+    .info-value {
+        font-size: 1rem;
+    }
+}
+
+/* ============================================================
+   ANIMACIONES
+   ============================================================ */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Aplicar animaciones */
+.card {
+    animation: fadeIn 0.6s ease-out;
+}
+
+.info-row {
+    animation: slideInLeft 0.4s ease-out;
+    animation-fill-mode: both;
+}
+
+.info-row:nth-child(1) { animation-delay: 0.1s; }
+.info-row:nth-child(2) { animation-delay: 0.2s; }
+.info-row:nth-child(3) { animation-delay: 0.3s; }
+.info-row:nth-child(4) { animation-delay: 0.4s; }
+.info-row:nth-child(5) { animation-delay: 0.5s; }
+.info-row:nth-child(6) { animation-delay: 0.6s; }
+.info-row:nth-child(7) { animation-delay: 0.7s; }
+.info-row:nth-child(8) { animation-delay: 0.8s; }
+.info-row:nth-child(9) { animation-delay: 0.9s; }
+
+/* ============================================================
+   ESTILOS PARA IMPRESIÓN
+   ============================================================ */
+@media print {
+    body {
+        background: white !important;
+    }
+
+    .btn,
+    .card-footer {
+        display: none !important;
+    }
+
+    .card {
+        box-shadow: none !important;
+        border: 2px solid #000 !important;
+        margin: 0 !important;
+    }
+
+    .card-header {
+        background: #f0f0f0 !important;
+        color: #000 !important;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .info-row {
+        break-inside: avoid;
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+        margin-bottom: 10px !important;
+    }
+
+    .info-label {
+        color: #000 !important;
+    }
+
+    .info-value a {
+        color: #000 !important;
+        text-decoration: underline !important;
+    }
+}
