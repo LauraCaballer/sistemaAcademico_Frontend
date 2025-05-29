@@ -16,14 +16,14 @@ import java.util.Date;
 import java.util.List;
 
 @Controller
-@RequestMapping("/admin")
-public class MensajeController {
+@RequestMapping("/estudiante")
+public class EstudianteMensajeController {
 
     private static final String API_BASE = "http://localhost:8080/mensajes";
     private final RestTemplate rest;
 
     @Autowired
-    public MensajeController(RestTemplate rest) {
+    public EstudianteMensajeController(RestTemplate rest) {
         this.rest = rest;
     }
 
@@ -66,7 +66,7 @@ public class MensajeController {
             model.addAttribute("unreadCount", unreadCount);
             model.addAttribute("now", new Date());
 
-            return "admin_mensajeria";
+            return "estudiante_mensajeria";
 
         } catch (Exception e) {
             e.printStackTrace(); // Para debug
@@ -104,17 +104,17 @@ public class MensajeController {
 
             // Asegurarse de que el destinatario tenga un ID válido
             if (mensaje.getDestinatario() == null || mensaje.getDestinatario().getId() == null) {
-                return "redirect:/admin/mensajes?error=destinatario_requerido";
+                return "redirect:/estudiante/mensajes?error=destinatario_requerido";
             }
 
             HttpEntity<Mensajeria> req = new HttpEntity<>(mensaje, authHeaders(session));
             rest.exchange(API_BASE, HttpMethod.POST, req, Mensajeria.class);
 
-            return "redirect:/admin/mensajes";
+            return "redirect:/estudiante/mensajes";
 
         } catch (Exception e) {
             e.printStackTrace();
-            return "redirect:/admin/mensajes?error=envio";
+            return "redirect:/estudiante/mensajes?error=envio";
         }
     }
 
@@ -141,7 +141,7 @@ public class MensajeController {
 
         } catch (Exception e) {
             e.printStackTrace();
-            return "redirect:/admin/mensajes?error=lectura";
+            return "redirect:/estudiante/mensajes?error=lectura";
         }
     }
 
@@ -156,11 +156,11 @@ public class MensajeController {
             HttpEntity<Void> req = new HttpEntity<>(authHeaders(session));
             rest.exchange(API_BASE + "/" + id, HttpMethod.DELETE, req, Void.class);
 
-            return "redirect:/admin/mensajes";
+            return "redirect:/estudiante/mensajes";
 
         } catch (Exception e) {
             e.printStackTrace();
-            return "redirect:/admin/mensajes?error=eliminacion";
+            return "redirect:/estudiante/mensajes?error=eliminacion";
         }
     }
 }

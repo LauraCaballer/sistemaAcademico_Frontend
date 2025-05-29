@@ -160,13 +160,21 @@
     <nav>
         <h2>Admin Panel</h2>
         <ul>
-            <li><a href="http://localhost:3000/admin/docentes">Docentes</a></li>
-            <li><a href="http://localhost:3000/admin/estudiantes">Estudiantes</a></li>
-            <li><a href="http://localhost:3000/admin/foros">Foros</a></li>
-            <li><a href="http://localhost:3000/admin/personas">Personas</a></li>
-            <li><a href="http://localhost:3000/admin/programas">Programas</a></li>
-            <li><a href="http://localhost:3000/admin/semestres">Semestres</a></li>
-            <li><a href="http://localhost:3000/admin/mensajes">mensajeria</a></li>
+            <li><strong>Gestión Académica</strong></li>
+            <li><a href="http://localhost:3000/admin/estudiante_historial">Historial Académico</a></li>
+            <li><a href="http://localhost:3000/admin/mensajes">Materias</a></li>
+            <li><a href="http://localhost:3000/admin/mensajes">Horario</a></li>
+            <li><a href="http://localhost:3000/admin/mensajes">Notas</a></li>
+            <li><a href="http://localhost:3000/admin/mensajes">Pensum</a></li>
+            <li><a href="http://localhost:3000/admin/mensajes">Inclusiones</a></li>
+
+            <li><strong>Solicitudes y Servicios</strong></li>
+            <li><a href="http://localhost:3000/admin/mensajes">Cancelar Curso</a></li>
+            <li><a href="http://localhost:3000/admin/mensajes">Solicitud de Materiales</a></li>
+
+            <li><strong>Comunicación</strong></li>
+            <li><a href="http://localhost:3000/admin/mensajes">Foro</a></li>
+            <li><a href="http://localhost:3000/admin/mensajes">Mensajería</a></li>
         </ul>
     </nav>
 

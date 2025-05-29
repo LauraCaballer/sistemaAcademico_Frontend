@@ -2,6 +2,7 @@
      ADMIN_LISTESTUDIANTE.JSP - SIMPLIFICADO
      ============================================================ -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page pageEncoding="UTF-8"%>
 <html>
     <head>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -28,9 +29,9 @@
                 <div class="header-content">
                     <h1 class="page-title">
                         <i class="fas fa-graduation-cap"></i>
-                        Gesti�n de Estudiantes
+                        Gestión de Estudiantes
                     </h1>
-                    <p class="page-subtitle">Administra y supervisa la informaci�n de todos los estudiantes</p>
+                    <p class="page-subtitle">Administra y supervisa la información de todos los estudiantes</p>
                 </div>
             </div>
             
