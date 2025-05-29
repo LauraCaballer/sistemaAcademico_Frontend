@@ -7,38 +7,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Información de Persona</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-  <style>
-    .card-header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-    }
-    .info-row {
-      border-bottom: 1px solid #e9ecef;
-      padding: 12px 0;
-    }
-    .info-row:last-child {
-      border-bottom: none;
-    }
-    .info-label {
-      font-weight: 600;
-      color: #495057;
-    }
-    .info-value {
-      color: #212529;
-    }
-    .icon {
-      width: 20px;
-      text-align: center;
-      margin-right: 8px;
-      color: #6c757d;
-    }
-    .empty-value {
-      color: #6c757d;
-      font-style: italic;
-    }
-  </style>
+    <link rel="stylesheet" href="<c:url value='/css/estudiante_informacion.css' />" />
+
 </head>
 <body class="bg-light">
 <div class="container mt-4">

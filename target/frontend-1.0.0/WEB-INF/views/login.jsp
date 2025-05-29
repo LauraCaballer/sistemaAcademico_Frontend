@@ -4,7 +4,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Login</title>
-    <link rel="stylesheet" href="<c:url value='/css/styles.css' />" />
+    <link rel="stylesheet" href="<c:url value='/css/login.css' />" />
 </head>
 <body>
 <h1>Login Page</h1>

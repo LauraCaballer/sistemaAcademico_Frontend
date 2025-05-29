@@ -161,20 +161,21 @@
         <h2>Admin Panel</h2>
         <ul>
             <li><strong>Gestión Académica</strong></li>
-            <li><a href="http://localhost:3000/admin/estudiante_historial">Historial Académico</a></li>
-            <li><a href="http://localhost:3000/admin/mensajes">Materias</a></li>
-            <li><a href="http://localhost:3000/admin/mensajes">Horario</a></li>
-            <li><a href="http://localhost:3000/admin/mensajes">Notas</a></li>
-            <li><a href="http://localhost:3000/admin/mensajes">Pensum</a></li>
-            <li><a href="http://localhost:3000/admin/mensajes">Inclusiones</a></li>
+            <li><a href="http://localhost:3000/estudiante/informacion">Información académica</a></li>
+            <li><a href="http://localhost:3000/estudiante/historial">Historial Académico</a></li>
+            <li><a href="http://localhost:3000/estudiante/mensajes">Materias</a></li>
+            <li><a href="http://localhost:3000/estudiante/mensajes">Horario</a></li>
+            <li><a href="http://localhost:3000/estudiante/mensajes">Notas</a></li>
+            <li><a href="http://localhost:3000/estudiante/mensajes">Pensum</a></li>
+            <li><a href="http://localhost:3000/estudiante/mensajes">Inclusiones</a></li>
 
             <li><strong>Solicitudes y Servicios</strong></li>
-            <li><a href="http://localhost:3000/admin/mensajes">Cancelar Curso</a></li>
-            <li><a href="http://localhost:3000/admin/mensajes">Solicitud de Materiales</a></li>
+            <li><a href="http://localhost:3000/estudiante/mensajes">Cancelar Curso</a></li>
+            <li><a href="http://localhost:3000/estudiante/mensajes">Solicitud de Materiales</a></li>
 
             <li><strong>Comunicación</strong></li>
-            <li><a href="http://localhost:3000/admin/mensajes">Foro</a></li>
-            <li><a href="http://localhost:3000/admin/mensajes">Mensajería</a></li>
+            <li><a href="http://localhost:3000/estudiante/mensajes">Foro</a></li>
+            <li><a href="http://localhost:3000/estudiante/mensajes">Mensajería</a></li>
         </ul>
     </nav>
 
