@@ -77,6 +77,30 @@ public class EstudianteCursoController { // Puedes usar este controlador o crear
                 }
                 logger.info("Estudiante ID obtenido: {} para personaId: {}", estudianteId, personaId);
 
+                try {
+                    // Asegúrate que este endpoint exista en tu backend
+                    String promedioUrl = HISTORIAL_API_URL + "/ponderado/" + estudianteId;
+                    logger.info("Llamando a API para obtener promedio ponderado acumulado: {}", promedioUrl);
+
+                    ResponseEntity<Double> promedioResponse = restTemplate.exchange(
+                            promedioUrl,
+                            HttpMethod.GET,
+                            requestEntity, // Reutilizar requestEntity con el token
+                            Double.class   // O Float.class, según lo que devuelva tu backend
+                    );
+
+                    if (promedioResponse.getStatusCode() == HttpStatus.OK && promedioResponse.getBody() != null) {
+                        model.addAttribute("promedioPonderadoAcumulado", promedioResponse.getBody());
+                        logger.info("Promedio ponderado acumulado obtenido: {}", promedioResponse.getBody());
+                    } else {
+                        logger.warn("No se pudo obtener el promedio ponderado acumulado o la respuesta no fue OK: {}. Se dejará sin mostrar.", promedioResponse.getStatusCode());
+                    }
+                } catch (HttpClientErrorException ex) {
+                    logger.error("Error HTTP al obtener promedio ponderado acumulado para estudianteId {}: {} - {}. No se mostrará.", estudianteId, ex.getStatusCode(), ex.getResponseBodyAsString());
+                } catch (Exception ex) {
+                    logger.error("Error general al obtener promedio ponderado acumulado para estudianteId {}: {}. No se mostrará.", estudianteId, ex.getMessage());
+                }
+
                 // PASO 2: Obtener la lista de EstudianteCurso usando el estudianteId
                 String getHistorialUrl = ESTUDIANTE_CURSO_API_URL + "/estudiante-aprobados/" + estudianteId;
                 logger.info("Llamando a API para obtener historial de cursos: {}", getHistorialUrl);
