@@ -164,25 +164,7 @@
                             </div>
 
                             <!-- Área o Departamento -->
-                            <div class="info-row">
-                                <div class="row">
-                                    <div class="col-4">
-                    <span class="info-label">
-                      <i class="fas fa-building icon"></i>Departamento:
-                    </span>
-                                    </div>
-                                    <div class="col-8">
-                    <span class="info-value">
-                      <c:choose>
-                          <c:when test="${not empty docente.departamento}">
-                              ${docente.departamento}
-                          </c:when>
-                          <c:otherwise>
-                              <span class="empty-value">No especificado</span>
-                          </c:otherwise>
-                      </c:choose>
-                    </span>
-                                    </div>
+
                                 </div>
                             </div>
 
