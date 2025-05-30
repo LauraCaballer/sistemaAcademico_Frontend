@@ -23,7 +23,7 @@ import java.util.List;
 @RequestMapping("/admin")
 public class AdminForo {
 
-    private static final String API_BASE = "http://localhost:8080/foros";
+    private static final String API_BASE = "http://localhost:8081/foros";
     private final RestTemplate rest;
 
     @Autowired

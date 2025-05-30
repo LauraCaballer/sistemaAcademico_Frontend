@@ -15,37 +15,25 @@
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <!-- CSS Personalizado -->
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin-styles.css">
+        <link rel="stylesheet" href="http://localhost:3000/css/admin-styles.css">
     </head>
     <body class="estudiantes">
-        <!-- Navegación Lateral -->
+        <!-- Navegaciï¿½n Lateral -->
         <nav>
             <h2><i class="fas fa-graduation-cap"></i> Panel Admin</h2>
             <ul>
-                <li>
-                    <a href="${pageContext.request.contextPath}/admin/docentes">Docentes</a>
-                </li>
-                <li class="active">
-                    <a href="${pageContext.request.contextPath}/admin/estudiantes">Estudiantes</a>
-                </li>
-                <li>
-                    <a href="${pageContext.request.contextPath}/admin/foros">Foros</a>
-                </li>
-                <li>
-                    <a href="${pageContext.request.contextPath}/admin/personas">Personas</a>
-                </li>
-                <li>
-                    <a href="${pageContext.request.contextPath}/admin/programas">Programas</a>
-                </li>
-                <li>
-                    <a href="${pageContext.request.contextPath}/admin/semestres">Semestres</a>
-                </li>
+                <li><a href="http://localhost:3000/admin/docentes">Docentes</a></li>
+                <li class="active"><a href="http://localhost:3000/admin/estudiantes">Estudiantes</a></li>
+                <li><a href="http://localhost:3000/admin/foros">Foros</a></li>
+                <li><a href="http://localhost:3000/admin/personas">Personas</a></li>
+                <li><a href="http://localhost:3000/admin/programas">Programas</a></li>
+                <li><a href="http://localhost:3000/admin/semestres">Semestres</a></li>
             </ul>
         </nav>
 
         <!-- Contenido Principal -->
         <main id="contenido">
-            <!-- Header de Página -->
+            <!-- Header de Pï¿½gina -->
             <div class="header-section">
                 <div class="header-content">
                     <h1 class="page-title">
@@ -55,7 +43,7 @@
                             <c:otherwise>Nuevo Estudiante</c:otherwise>
                         </c:choose>
                     </h1>
-                    <p class="page-subtitle">Gestión de información estudiantil</p>
+                    <p class="page-subtitle">Gestiï¿½n de informaciï¿½n estudiantil</p>
                 </div>
             </div>
 
@@ -68,7 +56,7 @@
 
                         <div class="form-group">
                             <label for="codigoEstudiante">
-                                <i class="fas fa-id-badge"></i> Código Estudiante:
+                                <i class="fas fa-id-badge"></i> Cï¿½digo Estudiante:
                             </label>
                             <input type="number" 
                                    id="codigoEstudiante"
@@ -76,7 +64,7 @@
                                    class="form-control" 
                                    value="${estudiante.codigoEstudiante}" 
                                    required 
-                                   placeholder="Ingrese el código del estudiante"/>
+                                   placeholder="Ingrese el cï¿½digo del estudiante"/>
                         </div>
 
                         <div class="form-group">

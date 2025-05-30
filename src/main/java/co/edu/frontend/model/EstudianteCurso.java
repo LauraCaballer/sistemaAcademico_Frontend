@@ -5,7 +5,13 @@ public class EstudianteCurso {
     private Long id;
 
     private Curso curso;
+    private Float P1;
+    private Float P2;
+    private Float P3;
+    private Float EX;
+    private Float H;
     private Float definitiva;
+    private String retroalimentacion;
 
     private Estudiante estudiante;
 
@@ -58,5 +64,53 @@ public class EstudianteCurso {
 
     public void setDefinitiva(Float definitiva) {
         this.definitiva = definitiva;
+    }
+
+    public Float getP1() {
+        return P1;
+    }
+
+    public void setP1(Float p1) {
+        P1 = p1;
+    }
+
+    public Float getP2() {
+        return P2;
+    }
+
+    public void setP2(Float p2) {
+        P2 = p2;
+    }
+
+    public Float getP3() {
+        return P3;
+    }
+
+    public void setP3(Float p3) {
+        P3 = p3;
+    }
+
+    public Float getEX() {
+        return EX;
+    }
+
+    public void setEX(Float EX) {
+        this.EX = EX;
+    }
+
+    public Float getH() {
+        return H;
+    }
+
+    public void setH(Float h) {
+        H = h;
+    }
+
+    public String getRetroalimentacion() {
+        return retroalimentacion;
+    }
+
+    public void setRetroalimentacion(String retroalimentacion) {
+        this.retroalimentacion = retroalimentacion;
     }
 }

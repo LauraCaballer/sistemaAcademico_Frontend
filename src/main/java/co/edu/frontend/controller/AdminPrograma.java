@@ -18,7 +18,7 @@ import java.util.List;
 @RequestMapping("/admin")
 public class AdminPrograma {
 
-    private static final String API_BASE = "http://localhost:8080/programas";
+    private static final String API_BASE = "http://localhost:8081/programas";
     private final RestTemplate rest;
 
     @Autowired

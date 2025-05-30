@@ -306,6 +306,12 @@
                 <div class="col-6 text-end">
                     <a href="historial" class="action-button">Historial</a>
                 </div>
+                <div class="col-6 text-end">
+                    <a href="mi-horario" class="action-button">Horario</a>
+                </div>
+                <div class="col-6 text-end">
+                    <a href="gestion" class="action-button">Matricula</a>
+                </div>
             </div>
           </div>
         </c:if>

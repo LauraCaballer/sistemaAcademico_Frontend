@@ -2,14 +2,25 @@ package co.edu.frontend.model;
 
 public class Aula {
     private Long id;
+    private String nombre;
     private Integer capacidad;
     private String ubicacion;
     private Integer dimensiones;
     private String tipo;    // Teórica, Práctica, Multimedia, Laboratorio
     private String estado;  // Disponible, Reservado, Mantenimiento, Explotao
     private Boolean esExamen;
+    private String estadoMateria; // Nueva propiedad
 
     // Getters y setters
+
+    public String getNombre() { // <<<<<< ADD GETTER
+        return nombre;
+    }
+
+    public void setNombre(String nombre) { // <<<<<< ADD SETTER
+        this.nombre = nombre;
+    }
+
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -30,4 +41,8 @@ public class Aula {
 
     public Boolean getEsExamen() { return esExamen; }
     public void setEsExamen(Boolean esExamen) { this.esExamen = esExamen; }
+
+    public String getEstadoMateria() { return estadoMateria; }
+    public void setEstadoMateria(String estadoMateria) { this.estadoMateria = estadoMateria; }
+
 }

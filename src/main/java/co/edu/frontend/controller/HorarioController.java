@@ -1,108 +1,174 @@
-package co.edu.frontend.controller;
+package co.edu.frontend.controller; // O tu paquete de controladores del frontend
 
-import co.edu.frontend.model.LoginResponse; // Asumiendo que esta clase existe
-//import co.edu.frontend.model.horario.ClaseInfo;
-//import co.edu.frontend.model.horario.FilaHorario;
+import co.edu.frontend.model.Estudiante;
+import co.edu.frontend.model.HorarioCurso; // Modelo del frontend
+import co.edu.frontend.model.LoginResponse;
 import jakarta.servlet.http.HttpSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Controller
-@RequestMapping("/estudiante") // Mantenemos la ruta base para consistencia
+@RequestMapping("/estudiante")
 public class HorarioController {
 
-    @GetMapping("/horario")
-    public String mostrarHorarioEstudiante(HttpSession session, Model model) {
-        LoginResponse loggedInUser = (LoginResponse) session.getAttribute("usuario");
+    private static final Logger logger = LoggerFactory.getLogger(HorarioController.class);
 
-        if (loggedInUser == null) {
-            // Si no hay usuario en sesión, redirigir a la página de login
+    // Asegúrate que estas URLs sean las correctas para tu backend
+    private final String ESTUDIANTE_API_URL = "http://localhost:8081/estudiantes";
+    private final String ESTUDIANTE_CURSO_API_URL = "http://localhost:8081/estudiante-cursos";
+
+    @Autowired
+    private RestTemplate restTemplate;
+
+    @GetMapping("/mi-horario")
+    public String mostrarMiHorario(HttpSession session, Model model) {
+        LoginResponse loginData = (LoginResponse) session.getAttribute("username");
+        if (loginData == null || loginData.getToken() == null) {
+            logger.warn("No hay sesión activa o token nulo, redirigiendo al login.");
             return "redirect:/login";
         }
 
-        // Atributos comunes para el layout (barra superior, menú lateral)
-        // El JSP usa "Juan David" de forma estática, pero pasamos el de sesión por si se actualiza el JSP
-        //model.addAttribute("sessionUserName", loggedInUser.getNombre());
-        // model.addAttribute("sessionUserRol", loggedInUser.getRol()); // Si fuera necesario
+        Long personaId = loginData.getPersonaId();
+        if (personaId == null) {
+            model.addAttribute("errorGlobal", "ID de persona no encontrado en sesión.");
+            model.addAttribute("horarioAgrupado", Collections.emptyMap());
+            model.addAttribute("diasOrdenados", Collections.emptyList());
+            return "estudiante_horario";
+        }
 
-        // Para mantener la visualización actual del JSP que tiene "Juan David" hardcodeado
-        model.addAttribute("displayUserName", "Juan David");
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(loginData.getToken());
+        HttpEntity<Void> requestEntityForEstudiante = new HttpEntity<>(headers); // Request entity para obtener Estudiante
+        Long estudianteId = null;
+        String nombreCompletoEstudiante = "Estudiante"; // Valor por defecto
 
+        try {
+            String getEstudianteUrl = ESTUDIANTE_API_URL + "/persona/" + personaId;
+            ResponseEntity<Estudiante> estudianteResponse = restTemplate.exchange(
+                    getEstudianteUrl, HttpMethod.GET, requestEntityForEstudiante, Estudiante.class);
 
-        // Título específico de la página
-        model.addAttribute("pageTitle", "Sistema Académico - Horario de Clases");
+            if (estudianteResponse.getStatusCode() == HttpStatus.OK && estudianteResponse.getBody() != null) {
+                Estudiante estudiante = estudianteResponse.getBody();
+                estudianteId = estudiante.getId();
+                if (estudiante.getPersona() != null) { // Asumiendo que Estudiante tiene Persona
+                    nombreCompletoEstudiante = estudiante.getPersona().getNombre(); // Asumiendo que Persona tiene getNombreCompleto()
+                }
+                model.addAttribute("nombreEstudiante", nombreCompletoEstudiante);
+            } else {
+                model.addAttribute("errorGlobal", "No se pudo obtener la información del estudiante. Estado: " + estudianteResponse.getStatusCode());
+                model.addAttribute("horarioAgrupado", Collections.emptyMap());
+                model.addAttribute("diasOrdenados", Collections.emptyList());
+                return "estudiante_horario";
+            }
+        } catch (HttpClientErrorException e) {
+            logger.error("Error HTTP al obtener estudiante (personaId: {}): {} - {}", personaId, e.getStatusCode(), e.getResponseBodyAsString());
+            model.addAttribute("errorGlobal", "Error al contactar servicio de estudiantes: " + e.getMessage());
+            model.addAttribute("horarioAgrupado", Collections.emptyMap());
+            model.addAttribute("diasOrdenados", Collections.emptyList());
+            return "estudiante_horario";
+        } catch (Exception e) {
+            logger.error("Error general al obtener estudiante (personaId: {}):", personaId, e);
+            model.addAttribute("errorGlobal", "Error inesperado al obtener datos del estudiante: " + e.getMessage());
+            model.addAttribute("horarioAgrupado", Collections.emptyMap());
+            model.addAttribute("diasOrdenados", Collections.emptyList());
+            return "estudiante_horario";
+        }
 
-        // Preparar los datos del horario
-        /*List<FilaHorario> horarioFilas = new ArrayList<>();
+        if (estudianteId == null) {
+            model.addAttribute("errorGlobal", "No se pudo determinar el ID del estudiante para cargar el horario.");
+            model.addAttribute("horarioAgrupado", Collections.emptyMap());
+            model.addAttribute("diasOrdenados", Collections.emptyList());
+            return "estudiante_horario";
+        }
 
-        // --- Poblamos el horario según el JSP ---
-        // Nota: En una aplicación real, estos datos vendrían de una base de datos o servicio.
+        // Reusar HttpEntity con headers para la llamada al API del horario
+        HttpEntity<Void> requestEntityForHorario = new HttpEntity<>(headers);
 
-        // Fila 06:00-07:00
-        FilaHorario fila06 = new FilaHorario("06:00-07:00");
-        fila06.setMartes(new ClaseInfo("Sistemas operativos - B", "SB404", "border-sistemas"));
-        fila06.setJueves(new ClaseInfo("Programación web - A", "SA402", "border-programacion"));
-        fila06.setViernes(new ClaseInfo("Programación web - A", "SA401", "border-programacion"));
-        horarioFilas.add(fila06);
+        try {
+            String urlHorario = ESTUDIANTE_CURSO_API_URL + "/estudiante/" + estudianteId + "/horario-actual";
+            logger.info("Obteniendo horario del estudiante ID {} desde: {}", estudianteId, urlHorario);
 
-        // Fila 07:00-08:00
-        FilaHorario fila07 = new FilaHorario("07:00-08:00");
-        fila07.setLunes(new ClaseInfo("Sistemas operativos - B", "SB404", "border-sistemas"));
-        fila07.setMartes(new ClaseInfo("Sistemas operativos - B", "SB404", "border-sistemas"));
-        fila07.setJueves(new ClaseInfo("Programación web - A", "SA402", "border-programacion"));
-        fila07.setViernes(new ClaseInfo("Programación web - A", "SA401", "border-programacion"));
-        horarioFilas.add(fila07);
+            ResponseEntity<List<HorarioCurso>> horarioResponse = restTemplate.exchange(
+                    urlHorario,
+                    HttpMethod.GET,
+                    requestEntityForHorario,
+                    new ParameterizedTypeReference<List<HorarioCurso>>() {}
+            );
 
-        // Fila 08:00-09:00
-        FilaHorario fila08 = new FilaHorario("08:00-09:00");
-        fila08.setLunes(new ClaseInfo("Seminario integrador II - A", "SA414", "border-seminario"));
-        fila08.setMartes(new ClaseInfo("Bases de datos - A", "SA402", "border-bases"));
-        fila08.setMiercoles(new ClaseInfo("Planeación estratégica de sistemas de inf - A", "SB401", "border-planeacion"));
-        fila08.setJueves(new ClaseInfo("Problemas sociales de frontera - A", "SA202", "border-problemas"));
-        fila08.setViernes(new ClaseInfo("Bases de datos - A", "SA414", "border-bases"));
-        horarioFilas.add(fila08);
+            if (horarioResponse.getStatusCode() == HttpStatus.OK && horarioResponse.getBody() != null) {
+                List<HorarioCurso> horarioCompleto = horarioResponse.getBody();
+                if (horarioCompleto.isEmpty()){
+                    model.addAttribute("mensajeInfo", "No tienes un horario definido o cursos matriculados actualmente.");
+                    model.addAttribute("horarioAgrupado", Collections.emptyMap());
+                    model.addAttribute("diasOrdenados", Collections.emptyList());
+                } else {
+                    // Agrupar por día (String)
+                    Map<String, List<HorarioCurso>> horarioAgrupado = horarioCompleto.stream()
+                            .filter(h -> h.getDia() != null) // Filtrar por si acaso algún día es nulo
+                            .collect(Collectors.groupingBy(HorarioCurso::getDia));
 
-        // Fila 09:00-10:00
-        FilaHorario fila09 = new FilaHorario("09:00-10:00");
-        fila09.setLunes(new ClaseInfo("Seminario integrador II - A", "SA414", "border-seminario"));
-        fila09.setMartes(new ClaseInfo("Bases de datos - A", "SA402", "border-bases"));
-        fila09.setJueves(new ClaseInfo("Problemas sociales de frontera - A", "SA202", "border-problemas"));
-        fila09.setViernes(new ClaseInfo("Bases de datos - A", "SA414", "border-bases"));
-        horarioFilas.add(fila09);
+                    model.addAttribute("horarioAgrupado", horarioAgrupado);
 
-        // Fila 10:00-11:00
-        FilaHorario fila10 = new FilaHorario("10:00-11:00");
-        fila10.setLunes(new ClaseInfo("Planeación estratégica de sistemas de inf - A", "SA411", "border-planeacion"));
-        horarioFilas.add(fila10);
+                    // Crear una lista ordenada de los días (String) que realmente tienen horarios
+                    List<String> diasConHorarioOrdenados = new ArrayList<>(horarioAgrupado.keySet());
 
-        // Fila 11:00-12:00
-        FilaHorario fila11 = new FilaHorario("11:00-12:00");
-        fila11.setLunes(new ClaseInfo("Planeación estratégica de sistemas de inf - A", "SA411", "border-planeacion"));
-        fila11.setMiercoles(new ClaseInfo("Constitución y civismo - A", "AG404", "border-constitucion"));
-        horarioFilas.add(fila11);
+                    Map<String, Integer> dayOrder = new HashMap<>();
+                    dayOrder.put("LUNES", 1);
+                    dayOrder.put("MARTES", 2);
+                    dayOrder.put("MIERCOLES", 3);
+                    dayOrder.put("JUEVES", 4);
+                    dayOrder.put("VIERNES", 5);
+                    dayOrder.put("SABADO", 6);
+                    dayOrder.put("DOMINGO", 7);
 
-        // Fila 12:00-13:00
-        FilaHorario fila12 = new FilaHorario("12:00-13:00");
-        fila12.setMiercoles(new ClaseInfo("Constitución y civismo - A", "AG404", "border-constitucion"));
-        horarioFilas.add(fila12);
+                    diasConHorarioOrdenados.sort(Comparator.comparing(
+                            diaStr -> dayOrder.getOrDefault(diaStr.toUpperCase(), Integer.MAX_VALUE)
+                    ));
+                    model.addAttribute("diasOrdenados", diasConHorarioOrdenados);
+                }
+            } else if (horarioResponse.getStatusCode() == HttpStatus.NO_CONTENT) {
+                model.addAttribute("mensajeInfo", "No tienes un horario definido o cursos matriculados actualmente.");
+                model.addAttribute("horarioAgrupado", Collections.emptyMap());
+                model.addAttribute("diasOrdenados", Collections.emptyList());
+            } else {
+                model.addAttribute("errorHorario", "No se pudo obtener el horario (Respuesta API: " + horarioResponse.getStatusCode() + ")");
+                model.addAttribute("horarioAgrupado", Collections.emptyMap());
+                model.addAttribute("diasOrdenados", Collections.emptyList());
+            }
 
-        // Filas vacías restantes según el JSP (de 13:00 a 22:00)
-        String[] franjasVacias = {
-                "13:00-14:00", "14:00-15:00", "15:00-16:00", "16:00-17:00",
-                "17:00-18:00", "18:00-19:00", "19:00-20:00", "20:00-21:00", "21:00-22:00"
-        };
-        for (String franja : franjasVacias) {
-            horarioFilas.add(new FilaHorario(franja)); // Se añaden vacías
-        }*/
-        // --- Fin de la población del horario ---
+        } catch (HttpClientErrorException e) {
+            if (e.getStatusCode() == HttpStatus.NO_CONTENT) {
+                model.addAttribute("mensajeInfo", "No tienes un horario definido o cursos matriculados actualmente.");
+            } else {
+                logger.error("Error HTTP al obtener horario del estudiante {}: {} - {}", estudianteId, e.getStatusCode(), e.getResponseBodyAsString());
+                model.addAttribute("errorHorario", "Error al cargar el horario: " + e.getResponseBodyAsString());
+            }
+            model.addAttribute("horarioAgrupado", Collections.emptyMap());
+            model.addAttribute("diasOrdenados", Collections.emptyList());
+        } catch (Exception e) {
+            logger.error("Error general al obtener horario del estudiante {}:", estudianteId, e);
+            model.addAttribute("errorHorario", "Ocurrió un error inesperado al consultar tu horario: " + e.getMessage());
+            model.addAttribute("horarioAgrupado", Collections.emptyMap());
+            model.addAttribute("diasOrdenados", Collections.emptyList());
+        }
 
-        //model.addAttribute("horarioFilas", horarioFilas);
-
-        return "horario";
+        return "estudiante_horario";
     }
 }
