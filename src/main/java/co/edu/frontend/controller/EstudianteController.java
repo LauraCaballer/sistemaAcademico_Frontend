@@ -17,7 +17,7 @@ import org.springframework.web.client.RestTemplate;
 public class EstudianteController {
     // URL de tu API backend para obtener datos del estudiante por personaId
     // Asegúrate que este endpoint exista en tu backend (EstudianteController.java)
-    private final String ESTUDIANTE_API_URL = "https://c568-181-33-168-160.ngrok-free.app/estudiantes"; // Asumiendo que tienes el backend en el puerto 8080
+    private final String ESTUDIANTE_API_URL = "https://005b-2800-486-e78-6d00-48b9-32c2-f399-b856.ngrok-free.app/estudiantes"; // Asumiendo que tienes el backend en el puerto 8080
 
     @Autowired
     private RestTemplate restTemplate; // Asegúrate de tener configurado el bean de RestTemplate

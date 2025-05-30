@@ -17,7 +17,7 @@ import java.util.List;
 
 @Controller
 public class LoginController {
-    private final String AUTH_URL = "https://c568-181-33-168-160.ngrok-free.app/api/auth/login";
+    private final String AUTH_URL = "https://005b-2800-486-e78-6d00-48b9-32c2-f399-b856.ngrok-free.app/api/auth/login";
 
     @GetMapping("/login")
     public String mostrarFormularioLogin(Model model) {
