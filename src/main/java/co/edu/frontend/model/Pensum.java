@@ -4,10 +4,6 @@
  */
 package co.edu.frontend.model;
 
-/**
- *
- * @author forer
- */
 public class Pensum {
     private Long id;
     private String nombre;

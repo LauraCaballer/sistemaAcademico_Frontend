@@ -18,10 +18,10 @@
 
 <form action="<c:choose>
         <c:when test='${foro.id != null}'>
-            ${pageContext.request.contextPath}/admin/foros/${foro.id}
+            http://localhost:3000/admin/foros/${foro.id}
         </c:when>
         <c:otherwise>
-            ${pageContext.request.contextPath}/admin/foros
+            http://localhost:3000/admin/foros
         </c:otherwise>
     </c:choose>"
       method="post">
@@ -29,11 +29,11 @@
     <label>Tema:</label><br/>
     <input type="text" name="tema" value="${foro.tema}" required/><br/><br/>
 
-    <label>Descripción:</label><br/>
+    <label>Descripciï¿½n:</label><br/>
     <textarea name="descripcion" rows="4" cols="50" required>${foro.descripcion}</textarea>
     <br/><br/>
 
-    <label>Fecha Creación:</label><br/>
+    <label>Fecha Creaciï¿½n:</label><br/>
     <input type="datetime-local"
            name="fechaCreacion"
            value="${foro.fechaCreacion != null ? foro.fechaCreacion.toString().replace('Z','') : ''}"
@@ -41,7 +41,7 @@
     <br/><br/>
 
     <button type="submit">Guardar</button>
-    <a href="${pageContext.request.contextPath}/admin/foros">Cancelar</a>
+    <a href="http://localhost:3000/admin/foros">Cancelar</a>
 </form>
 </body>
 </html>

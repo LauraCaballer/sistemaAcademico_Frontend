@@ -16,10 +16,10 @@
 
         <form action="<c:choose>
                   <c:when test='${programa.id != null}'>
-                      ${pageContext.request.contextPath}/admin/programas/${programa.id}
+                      http://localhost:3000/admin/programas/${programa.id}
                   </c:when>
                   <c:otherwise>
-                      ${pageContext.request.contextPath}/admin/programas
+                      http://localhost:3000/admin/programas
                   </c:otherwise>
               </c:choose>"
               method="post">
@@ -27,13 +27,13 @@
             <label>Nombre:</label><br/>
             <input type="text" name="nombre" value="${programa.nombre}" required/><br/><br/>
 
-            <label>Código:</label><br/>
+            <label>Cï¿½digo:</label><br/>
             <input type="number" name="codigo" value="${programa.codigo}" required/><br/><br/>
 
             <label>Acreditado:</label><br/>
 
             <select name="acreditado" required>
-                <option value="true"  <c:if test="${programa.acreditado}">selected</c:if>>Sí</option>
+                <option value="true"  <c:if test="${programa.acreditado}">selected</c:if>>Sï¿½</option>
                 <option value="false" <c:if test="${!programa.acreditado}">selected</c:if>>No</option>
                 </select>
                 <br/><br/>
@@ -42,7 +42,7 @@
                 <input type="text" name="facultad" value="${programa.facultad}" required/><br/><br/>
 
             <button type="submit">Guardar</button>
-            <a href="${pageContext.request.contextPath}/admin/programas">Cancelar</a>
+            <a href="http://localhost:3000/admin/programas">Cancelar</a>
         </form>
     </body>
 </html>

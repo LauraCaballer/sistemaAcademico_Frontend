@@ -27,6 +27,7 @@
 </head>
 <body>
 <div class="sidebar">
+
     <nav>
         <h2>Admin Panel</h2>
         <ul>
@@ -47,6 +48,7 @@
             <li><a href="http://localhost:3000/admin/mensajes">Mensajería</a></li>
         </ul>
     </nav>
+
 </div>
 
 <div class="main-content">
