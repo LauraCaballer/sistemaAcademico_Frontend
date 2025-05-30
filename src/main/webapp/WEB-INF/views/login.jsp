@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="<c:url value='/css/login.css' />" />
 </head>
 <body>
-<h1>Login Page</h1>
+<h1>Inicio Sesion</h1>
 <form th:action="@{/login}" method="post">
     <div>
-        <label for="username">Username:</label>
+        <label for="username">Nombre de Usuario:</label>
         <input type="text" id="username" name="username" />
     </div>
     <div>
-        <label for="password">Password:</label>
+        <label for="password">Contraseña:</label>
         <input type="password" id="password" name="password" />
     </div>
     <div>
@@ -22,11 +22,6 @@
     </div>
 </form>
 
-<div th:if="${error}" style="color: red;">
-    <p th:text="${error}"></p>
-</div>
-<div th:if="${username}" style="color: gray;">
-    <p>Last username entered: <span th:text="${username}"></span></p>
-</div>
+
 </body>
 </html>

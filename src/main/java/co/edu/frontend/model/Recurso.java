@@ -1,6 +1,6 @@
 package co.edu.frontend.model;
 
-public class Material {
+public class Recurso {
     private Long id;
     private String nombre;
     private String ubicacion;

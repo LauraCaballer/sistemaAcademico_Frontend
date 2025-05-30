@@ -18,34 +18,25 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin-styles.css">
     </head>
     <body class="docentes">
-        <!-- Navegación Lateral -->
+        <!-- Navegaciï¿½n Lateral -->
         <nav>
-            <h2><i class="fas fa-graduation-cap"></i> Panel Admin</h2>
+            <h2>Admin Panel</h2>
             <ul>
-                <li class="active">
-                    <a href="${pageContext.request.contextPath}/admin/docentes">Docentes</a>
-                </li>
-                <li>
-                    <a href="${pageContext.request.contextPath}/admin/estudiantes">Estudiantes</a>
-                </li>
-                <li>
-                    <a href="${pageContext.request.contextPath}/admin/foros">Foros</a>
-                </li>
-                <li>
-                    <a href="${pageContext.request.contextPath}/admin/personas">Personas</a>
-                </li>
-                <li>
-                    <a href="${pageContext.request.contextPath}/admin/programas">Programas</a>
-                </li>
-                <li>
-                    <a href="${pageContext.request.contextPath}/admin/semestres">Semestres</a>
-                </li>
+                <li><a href="http://localhost:3000/admin/docentes">Docentes</a></li>
+                <li><a href="http://localhost:3000/admin/estudiantes">Estudiantes</a></li>
+                <li><a href="http://localhost:3000/admin/foros">Foros</a></li>
+                <li><a href="http://localhost:3000/admin/personas">Personas</a></li>
+                <li><a href="http://localhost:3000/admin/programas">Programas</a></li>
+                <li><a href="http://localhost:3000/admin/semestres">Semestres</a></li>
+                <li><a href="http://localhost:3000/admin/mensajes">mensajeria</a></li>
+                <li><a href="http://localhost:3000/admin/materiales">Informe Materiales</a></li>
+
             </ul>
         </nav>
 
         <!-- Contenido Principal -->
         <main id="contenido">
-            <!-- Header de Página -->
+            <!-- Header de Pï¿½gina -->
             <div class="header-section">
                 <div class="header-content">
                     <h1 class="page-title">
@@ -55,7 +46,7 @@
                             <c:otherwise>Nuevo Docente</c:otherwise>
                         </c:choose>
                     </h1>
-                    <p class="page-subtitle">Gestión de información docente</p>
+                    <p class="page-subtitle">Gestiï¿½n de informaciï¿½n docente</p>
                 </div>
             </div>
 
@@ -67,7 +58,7 @@
 
                         <div class="form-group">
                             <label for="codigoDocente">
-                                <i class="fas fa-id-card"></i> Código Docente:
+                                <i class="fas fa-id-card"></i> Cï¿½digo Docente:
                             </label>
                             <input type="number" 
                                    id="codigoDocente"
@@ -75,7 +66,7 @@
                                    class="form-control" 
                                    value="${docente.codigoDocente}" 
                                    required 
-                                   placeholder="Ingrese el código del docente"/>
+                                   placeholder="Ingrese el cï¿½digo del docente"/>
                         </div>
 
                         <div class="form-group">

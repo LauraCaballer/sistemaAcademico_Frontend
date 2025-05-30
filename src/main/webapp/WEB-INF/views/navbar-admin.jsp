@@ -19,6 +19,8 @@
                 <li><a href="http://localhost:3000/admin/programas">Programas</a></li>
                 <li><a href="http://localhost:3000/admin/semestres">Semestres</a></li>
                 <li><a href="http://localhost:3000/admin/mensajes">mensajeria</a></li>
+                <li><a href="http://localhost:3000/admin/materiales">Informe Materiales</a></li>
+                <li><a href="http://localhost:3000/admin/asignaturas">Asignatura</a></li>
 
             </ul>
         </nav>
