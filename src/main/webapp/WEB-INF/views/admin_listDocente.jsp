@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page pageEncoding="UTF-8"%>
 <html>
     <head>
         <link
@@ -429,6 +430,7 @@
                 <li><a href="http://localhost:3000/admin/personas">Personas</a></li>
                 <li><a href="http://localhost:3000/admin/programas">Programas</a></li>
                 <li><a href="http://localhost:3000/admin/semestres">Semestres</a></li>
+                <li><a href="http://localhost:3000/admin/mensajes">mensajeria</a></li>
             </ul>
         </nav>
         
@@ -437,9 +439,9 @@
                 <div class="header-content">
                     <h1 class="page-title">
                         <i class="fas fa-chalkboard-teacher"></i>
-                        Gesti�n de Docentes
+                        Gestión de Docentes
                     </h1>
-                    <p class="page-subtitle">Administra y supervisa la informaci�n de todos los docentes</p>
+                    <p class="page-subtitle">Administra y supervisa la información de todos los docentes</p>
                 </div>
             </div>
             
@@ -461,7 +463,7 @@
                             <thead>
                                 <tr>
                                     <th><i class="fas fa-hashtag me-2"></i>ID</th>
-                                    <th><i class="fas fa-barcode me-2"></i>C�digo</th>
+                                    <th><i class="fas fa-barcode me-2"></i>Código</th>
                                     <th><i class="fas fa-star me-2"></i>Experiencia</th>
                                     <th><i class="fas fa-graduation-cap me-2"></i>Programa</th>
                                     <th><i class="fas fa-user me-2"></i>Persona</th>
@@ -490,7 +492,7 @@
                                                 </td>
                                                 <td>
                                                     <span class="experiencia-info">
-                                                        ${d.experiencia} a�os
+                                                        ${d.experiencia}
                                                     </span>
                                                 </td>
                                                 <td>
@@ -516,7 +518,7 @@
                                                           style="display:inline">
                                                         <button type="submit"
                                                                 class="btn btn-sm btn-eliminar"
-                                                                onclick="return confirm('�Est�s seguro de que deseas eliminar este docente?');">
+                                                                onclick="return confirm('Estás seguro de que deseas eliminar este docente?');">
                                                             <i class="fas fa-trash me-1"></i>
                                                             Eliminar
                                                         </button>

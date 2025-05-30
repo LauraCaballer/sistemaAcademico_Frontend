@@ -16,6 +16,9 @@
         <li><a href="${pageContext.request.contextPath}/admin/personas">Personas</a></li>
         <li><a href="${pageContext.request.contextPath}/admin/programas">Programas</a></li>
         <li class="active"><a href="${pageContext.request.contextPath}/admin/semestres">Semestres</a></li>
+
+        <li><a href="${pageContext.request.contextPath}/admin/mensajes">mensajes</a></li>
+
     </ul>
 </nav>
 

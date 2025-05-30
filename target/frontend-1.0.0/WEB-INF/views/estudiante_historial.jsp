@@ -27,24 +27,28 @@
 </head>
 <body>
 <div class="sidebar">
-    <h4>NAVEGACIÓN PRINCIPAL</h4>
-    <ul>
-        <li>Información Estudiantil
-            <ul>
-                <li><a href="<c:url value='/estudiante/informacion'/>">Datos Personales</a></li>
-            </ul>
-        </li>
-        <li>Información Académica
-            <ul>
-                <li><a href="<c:url value='/estudiante/historial'/>" style="font-weight:bold;">Historial Académico</a></li>
-                <li><a href="#">Materias</a></li>
-                <li><a href="#">Horario</a></li>
-                <li><a href="#">Notas</a></li>
-                <li><a href="#">Pensum</a></li>
-            </ul>
-        </li>
-        <li><a href="<c:url value='/logout'/>" class="logout-button">Cerrar sesión</a></li>
-    </ul>
+
+    <nav>
+        <h2>Admin Panel</h2>
+        <ul>
+            <li><strong>Gestión Académica</strong></li>
+            <li><a href="http://localhost:3000/admin/estudiante_historial">Historial Académico</a></li>
+            <li><a href="http://localhost:3000/admin/mensajes">Materias</a></li>
+            <li><a href="http://localhost:3000/admin/mensajes">Horario</a></li>
+            <li><a href="http://localhost:3000/admin/mensajes">Notas</a></li>
+            <li><a href="http://localhost:3000/admin/mensajes">Pensum</a></li>
+            <li><a href="http://localhost:3000/admin/mensajes">Inclusiones</a></li>
+
+            <li><strong>Solicitudes y Servicios</strong></li>
+            <li><a href="http://localhost:3000/admin/mensajes">Cancelar Curso</a></li>
+            <li><a href="http://localhost:3000/admin/mensajes">Solicitud de Materiales</a></li>
+
+            <li><strong>Comunicación</strong></li>
+            <li><a href="http://localhost:3000/admin/mensajes">Foro</a></li>
+            <li><a href="http://localhost:3000/admin/mensajes">Mensajería</a></li>
+        </ul>
+    </nav>
+
 </div>
 
 <div class="main-content">
