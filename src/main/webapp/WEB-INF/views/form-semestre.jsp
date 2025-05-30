@@ -18,10 +18,10 @@
 
 <form action="<c:choose>
         <c:when test='${semestre.id != null}'>
-            ${pageContext.request.contextPath}/admin/semestres/${semestre.id}
+            http://localhost:3000/admin/semestres/${semestre.id}
         </c:when>
         <c:otherwise>
-            ${pageContext.request.contextPath}/admin/semestres
+            http://localhost:3000/admin/semestres
         </c:otherwise>
     </c:choose>"
       method="post">
@@ -40,7 +40,7 @@
            placeholder="yyyy-MM-dd HH:mm:ss"
            required/><br/><br/>
 
-    <label>Año:</label><br/>
+    <label>Aï¿½o:</label><br/>
     <input type="number" name="anio" value="${semestre.anio}" required/><br/><br/>
 
     <label>Periodo:</label><br/>
@@ -52,7 +52,7 @@
     <br/><br/>
 
     <button type="submit">Guardar</button>
-    <a href="${pageContext.request.contextPath}/admin/semestres">Cancelar</a>
+    <a href="http://localhost:3000/admin/semestres">Cancelar</a>
 </form>
 </body>
 </html>

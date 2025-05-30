@@ -62,7 +62,8 @@ public class LoginController {
                 } else if(roles != null && roles.contains("Estudiante")){
                     return "redirect:/estudiante/informacion";
                 } else if(roles != null && roles.contains("Docente")){
-
+                    // Redirige al controlador de Docente
+                    return "redirect:/docente/informacion";
                 } else if(roles != null && roles.contains("PersonalAdministrativo")){
 
                 }

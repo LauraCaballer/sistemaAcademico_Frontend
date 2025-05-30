@@ -138,7 +138,7 @@
                 transform: scale(1.1);
             }
             
-            /* Indicador de sección activa */
+            /* Indicador de secciï¿½n activa */
             nav ul li:has(a[href*="docentes"]) a {
                 background: linear-gradient(90deg, rgba(220, 38, 38, 0.15) 0%, rgba(220, 38, 38, 0.05) 100%);
                 color: #ffffff;
@@ -150,7 +150,7 @@
                 color: #ffffff;
             }
             
-            /* Footer de navegación */
+            /* Footer de navegaciï¿½n */
             nav::after {
                 content: '';
                 margin-top: auto;
@@ -423,12 +423,13 @@
         <nav>
             <h2>Admin Panel</h2>
             <ul>
-                <li><a href="${pageContext.request.contextPath}/admin/docentes">Docentes</a></li>
-                <li><a href="${pageContext.request.contextPath}/admin/estudiantes">Estudiantes</a></li>
-                <li><a href="${pageContext.request.contextPath}/admin/foros">Foros</a></li>
-                <li><a href="${pageContext.request.contextPath}/admin/personas">Personas</a></li>
-                <li><a href="${pageContext.request.contextPath}/admin/programas">Programas</a></li>
-                <li><a href="${pageContext.request.contextPath}/admin/semestres">Semestres</a></li>
+                <li><a href="http://localhost:3000/admin/docentes">Docentes</a></li>
+                <li><a href="http://localhost:3000/admin/estudiantes">Estudiantes</a></li>
+                <li><a href="http://localhost:3000/admin/foros">Foros</a></li>
+                <li><a href="http://localhost:3000/admin/personas">Personas</a></li>
+                <li><a href="http://localhost:3000/admin/programas">Programas</a></li>
+                <li><a href="http://localhost:3000/admin/semestres">Semestres</a></li>
+                <li><a href="http://localhost:3000/admin/mensajes">mensajeria</a></li>
             </ul>
         </nav>
         
@@ -437,9 +438,9 @@
                 <div class="header-content">
                     <h1 class="page-title">
                         <i class="fas fa-chalkboard-teacher"></i>
-                        Gestión de Docentes
+                        Gestiï¿½n de Docentes
                     </h1>
-                    <p class="page-subtitle">Administra y supervisa la información de todos los docentes</p>
+                    <p class="page-subtitle">Administra y supervisa la informaciï¿½n de todos los docentes</p>
                 </div>
             </div>
             
@@ -461,7 +462,7 @@
                             <thead>
                                 <tr>
                                     <th><i class="fas fa-hashtag me-2"></i>ID</th>
-                                    <th><i class="fas fa-barcode me-2"></i>Código</th>
+                                    <th><i class="fas fa-barcode me-2"></i>Cï¿½digo</th>
                                     <th><i class="fas fa-star me-2"></i>Experiencia</th>
                                     <th><i class="fas fa-graduation-cap me-2"></i>Programa</th>
                                     <th><i class="fas fa-user me-2"></i>Persona</th>
@@ -490,7 +491,7 @@
                                                 </td>
                                                 <td>
                                                     <span class="experiencia-info">
-                                                        ${d.experiencia} años
+                                                        ${d.experiencia} aï¿½os
                                                     </span>
                                                 </td>
                                                 <td>
@@ -516,7 +517,7 @@
                                                           style="display:inline">
                                                         <button type="submit"
                                                                 class="btn btn-sm btn-eliminar"
-                                                                onclick="return confirm('¿Estás seguro de que deseas eliminar este docente?');">
+                                                                onclick="return confirm('ï¿½Estï¿½s seguro de que deseas eliminar este docente?');">
                                                             <i class="fas fa-trash me-1"></i>
                                                             Eliminar
                                                         </button>
