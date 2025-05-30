@@ -16,11 +16,11 @@ import java.util.List;
 @RequestMapping("/admin")
 public class AdminCurso {
 
-    private static final String API_CURSOS   = "http://localhost:8081/cursos";
-    private static final String API_DOCENTES = "http://localhost:8081/docentes";
-    private static final String API_PROGRAMAS = "http://localhost:8081/programas";
-    private static final String API_SEMESTRES = "http://localhost:8081/semestres";
-    private static final String API_ASIGNATURAS = "http://localhost:8081/asignaturas";
+    private static final String API_CURSOS   = "http://localhost:8080/cursos";
+    private static final String API_DOCENTES = "http://localhost:8080/docentes";
+    private static final String API_PROGRAMAS = "http://localhost:8080/programas";
+    private static final String API_SEMESTRES = "http://localhost:8080/semestres";
+    private static final String API_ASIGNATURAS = "http://localhost:8080/asignaturas";
 
 
     private final RestTemplate rest;
