@@ -26,9 +26,9 @@ public class MatriculaController {
 
     private static final Logger logger = LoggerFactory.getLogger(MatriculaController.class);
 
-    private final String ESTUDIANTE_API_URL = "http://localhost:8081/estudiantes"; // O tu puerto/URL real
-    private final String ESTUDIANTE_CURSO_API_URL = "http://localhost:8081/estudiante-cursos";
-    private final String CURSO_API_URL = "http://localhost:8081/cursos";
+    private final String ESTUDIANTE_API_URL = "http://localhost:8080/estudiantes"; // O tu puerto/URL real
+    private final String ESTUDIANTE_CURSO_API_URL = "http://localhost:8080/estudiante-cursos";
+    private final String CURSO_API_URL = "http://localhost:8080/cursos";
 
     @Autowired
     private RestTemplate restTemplate;

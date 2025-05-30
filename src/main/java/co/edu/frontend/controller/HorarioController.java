@@ -31,8 +31,8 @@ public class HorarioController {
     private static final Logger logger = LoggerFactory.getLogger(HorarioController.class);
 
     // Asegúrate que estas URLs sean las correctas para tu backend
-    private final String ESTUDIANTE_API_URL = "http://localhost:8081/estudiantes";
-    private final String ESTUDIANTE_CURSO_API_URL = "http://localhost:8081/estudiante-cursos";
+    private final String ESTUDIANTE_API_URL = "http://localhost:8080/estudiantes";
+    private final String ESTUDIANTE_CURSO_API_URL = "http://localhost:8080/estudiante-cursos";
 
     @Autowired
     private RestTemplate restTemplate;

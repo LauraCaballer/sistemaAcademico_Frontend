@@ -19,8 +19,8 @@ import java.util.stream.Collectors;
 @RequestMapping("/admin/aulas")
 public class AdminAula {
 
-    private static final String API_RECURSOS = "https://c568-181-33-168-160.ngrok-free.app/recursos";
-    private static final String API_AULAS = "https://c568-181-33-168-160.ngrok-free.app/aulas";
+    private static final String API_RECURSOS = "http://localhost:8080/recursos";
+    private static final String API_AULAS = "http://localhost:8080/aulas";
     private final RestTemplate rest;
 
     @Autowired
@@ -92,7 +92,6 @@ public class AdminAula {
 
         // 2. Usar el mismo ID del recurso creado para el aula
         Long recursoId = respRecurso.getBody().getId();
-        aula.setId(recursoId.intValue());
 
         // 3. Crear el aula con el mismo ID
         HttpEntity<Aula> reqAula = new HttpEntity<>(aula, headers);

@@ -22,7 +22,7 @@ public class DocenteAsignacionController {
     private static final Logger logger = LoggerFactory.getLogger(DocenteAsignacionController.class);
 
     // Base URL de tu API de backend (ajusta la parte del host/puerto según tu configuración)
-    private final String BACKEND_BASE = "https://005b-2800-486-e78-6d00-48b9-32c2-f399-b856.ngrok-free.app";
+    private final String BACKEND_BASE = "http://localhost:8080";
     private final String ASIGNACIONES_API = BACKEND_BASE + "/asignaciones";
 
     private final RestTemplate restTemplate;

@@ -16,7 +16,7 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("/docente")
 public class DocenteController {
 
-    private final String DOCENTE_API_URL = "https://005b-2800-486-e78-6d00-48b9-32c2-f399-b856.ngrok-free.app/docentes";
+    private final String DOCENTE_API_URL = "http://localhost:8080/docentes";
 
     @Autowired
     private RestTemplate restTemplate;

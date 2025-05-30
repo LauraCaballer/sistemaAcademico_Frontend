@@ -18,8 +18,8 @@ import java.util.Arrays;
 @Controller
 @RequestMapping("/admin/asignaturas")
 public class AdminAsignatura {
-    private static final String API_BASE   = "https://c568-181-33-168-160.ngrok-free.app/asignaturas";
-    private static final String API_PENSUM = "https://c568-181-33-168-160.ngrok-free.app/pensums";
+    private static final String API_BASE   = "http://localhost:8080/asignaturas";
+    private static final String API_PENSUM = "http://localhost:8080/pensums";
 
     private final RestTemplate rest;
 
