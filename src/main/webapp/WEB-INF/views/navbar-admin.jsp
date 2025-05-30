@@ -21,6 +21,7 @@
                 <li><a href="http://localhost:3000/admin/mensajes">mensajeria</a></li>
                 <li><a href="http://localhost:3000/admin/materiales">Informe Materiales</a></li>
                 <li><a href="http://localhost:3000/admin/asignaturas">Asignatura</a></li>
+                <li><a href="http://localhost:3000/admin/cursos">Cursos</a></li>
 
             </ul>
         </nav>
