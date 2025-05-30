@@ -17,7 +17,7 @@ import org.springframework.web.client.RestTemplate;
 public class EstudianteController {
     // URL de tu API backend para obtener datos del estudiante por personaId
     // Asegúrate que este endpoint exista en tu backend (EstudianteController.java)
-    private final String ESTUDIANTE_API_URL = "http://localhost:8081/estudiantes"; // Asumiendo que tienes el backend en el puerto 8080
+    private final String ESTUDIANTE_API_URL = "http://localhost:8080/estudiantes"; // Asumiendo que tienes el backend en el puerto 8080
 
     @Autowired
     private RestTemplate restTemplate; // Asegúrate de tener configurado el bean de RestTemplate

@@ -1,0 +1,204 @@
+/* ============================================================
+   MÓDULO DOCENTE - CSS ESPECÍFICO
+   ============================================================ */
+
+/* Variables CSS para el módulo de docentes */
+:root {
+    /* Colores principales - azul como el docente */
+    --teacher-primary: #1e40af;
+    --teacher-primary-dark: #1e3a8a;
+    --teacher-primary-light: #3b82f6;
+    --teacher-bg: #eff6ff;
+    --teacher-bg-light: #dbeafe;
+
+    /* Colores neutros */
+    --dark-bg: #0f172a;
+    --dark-secondary: #1e293b;
+    --text-light: #f1f5f9;
+    --text-gray: #94a3b8;
+    --text-dark: #0f172a;
+    --border-light: rgba(0,0,0,0.1);
+    --shadow-color: rgba(0,0,0,0.1);
+
+    /* Espaciado */
+    --nav-width: 250px;
+    --border-radius: 15px;
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 2.5rem;
+}
+
+/* RESET Y BASE */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--teacher-bg) 0%, var(--teacher-bg-light) 100%);
+    overflow: hidden;
+}
+
+/* NAVEGACIÓN LATERAL */
+.sidebar {
+    width: var(--nav-width);
+    background: linear-gradient(180deg, var(--dark-bg) 0%, var(--dark-secondary) 100%);
+    color: var(--text-light);
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+    padding: var(--spacing-sm);
+    box-shadow: 4px 0 20px var(--shadow-color);
+}
+
+.sidebar h4 {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-sm);
+    font-size: 1.2rem;
+    background: linear-gradient(135deg, var(--teacher-primary) 0%, var(--teacher-primary-dark) 100%);
+    color: white;
+    border-radius: var(--border-radius);
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: var(--spacing-xs);
+}
+
+.sidebar ul li a {
+    color: var(--text-light);
+    text-decoration: none;
+    display: block;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius);
+    transition: background 0.3s;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a[style*="font-weight:bold"] {
+    background: var(--teacher-primary-light);
+    padding-left: var(--spacing-md);
+}
+
+/* Botón cerrar sesión */
+.logout-button {
+    margin-top: auto;
+    display: block;
+    background: linear-gradient(135deg, var(--teacher-primary) 0%, var(--teacher-primary-dark) 100%);
+    color: white;
+    text-align: center;
+    padding: var(--spacing-sm);
+    border-radius: var(--border-radius);
+}
+
+.logout-button:hover {
+    background: var(--teacher-primary-dark);
+}
+
+/* ÁREA PRINCIPAL */
+.main-content {
+    flex: 1;
+    margin-left: var(--nav-width);
+    overflow-y: auto;
+    background: linear-gradient(135deg, var(--teacher-bg) 0%, var(--teacher-bg-light) 100%);
+    padding-bottom: var(--spacing-xl);
+}
+
+/* HEADER */
+.header-section {
+    background: linear-gradient(135deg, var(--teacher-primary) 0%, var(--teacher-primary-dark) 100%);
+    color: white;
+    padding: var(--spacing-lg);
+    box-shadow: 0 4px 20px var(--shadow-color);
+}
+
+.header-section h3 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+/* TABLA */
+.table-container {
+    margin: var(--spacing-xl);
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 20px 60px var(--shadow-color);
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+thead th {
+    background: linear-gradient(135deg, var(--teacher-primary) 0%, var(--teacher-primary-dark) 100%);
+    color: white;
+    padding: var(--spacing-sm);
+    text-align: left;
+}
+
+tbody tr {
+    border-bottom: 1px solid var(--border-light);
+    transition: background 0.3s, transform 0.3s;
+}
+
+tbody tr:hover {
+    background: var(--teacher-bg-light);
+    transform: scale(1.01);
+}
+
+tbody td {
+    padding: var(--spacing-sm);
+}
+
+/* ESTADO VACÍACIONAL */
+.empty-state {
+    margin: var(--spacing-xl);
+    text-align: center;
+    color: var(--text-gray);
+    font-size: 1.1rem;
+}
+
+/* BOTONES DE ACCIÓN */
+.action-button {
+    background: linear-gradient(135deg, var(--teacher-primary) 0%, var(--teacher-primary-dark) 100%);
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--border-radius);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.action-button:hover {
+    transform: translateY(-2px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        position: relative;
+        height: auto;
+    }
+    .main-content {
+        margin-left: 0;
+    }
+    table {
+        font-size: 0.8rem;
+    }
+}

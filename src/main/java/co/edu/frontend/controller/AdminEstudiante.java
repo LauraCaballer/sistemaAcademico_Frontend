@@ -23,9 +23,9 @@ import java.util.Arrays;
 @RequestMapping("/admin")
 public class AdminEstudiante {
 
-    private static final String API_BASE       = "http://localhost:8081/estudiantes";
-    private static final String API_PROGRAMAS  = "http://localhost:8081/programas";
-    private static final String API_PERSONAS   = "http://localhost:8081/personas";
+    private static final String API_BASE       = "http://localhost:8080/estudiantes";
+    private static final String API_PROGRAMAS  = "http://localhost:8080/programas";
+    private static final String API_PERSONAS   = "http://localhost:8080/personas";
 
     private final RestTemplate rest;
 

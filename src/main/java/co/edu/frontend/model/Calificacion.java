@@ -8,12 +8,13 @@ public class Calificacion {
     private Long id;
     private String nombre;
 
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "UTC")
     private Date fecha;
 
-    private String tipo;
+    private String tipo;  // Enum idéntico al del backend: P1, P2, P3, EX, H
 
     private Float nota;
+
     private EstudianteCurso estudianteCurso;
 
     private String retroalimentacion;

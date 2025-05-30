@@ -22,7 +22,7 @@ import java.util.List;
 @RequestMapping("/admin")
 public class AdminPersona {
 
-    private static final String API_BASE = "http://localhost:8081/personas";
+    private static final String API_BASE = "http://localhost:8080/personas";
     private final RestTemplate rest;
 
     @Autowired

@@ -25,9 +25,9 @@ import java.util.List;
 @RequestMapping("/admin")
 public class AdminDocente {
 
-    private static final String API_BASE = "http://localhost:8081/docentes";
-    private static final String API_PROGRAMAS = "http://localhost:8081/programas";
-    private static final String API_PERSONAS = "http://localhost:8081/personas";
+    private static final String API_BASE = "http://localhost:8080/docentes";
+    private static final String API_PROGRAMAS = "http://localhost:8080/programas";
+    private static final String API_PERSONAS = "http://localhost:8080/personas";
 
     private final RestTemplate rest;
 

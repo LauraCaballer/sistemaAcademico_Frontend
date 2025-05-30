@@ -17,7 +17,7 @@ import java.util.List;
 
 @Controller
 public class LoginController {
-    private final String AUTH_URL = "http://localhost:8081/api/auth/login";
+    private final String AUTH_URL = "http://localhost:8080/api/auth/login";
 
     @GetMapping("/login")
     public String mostrarFormularioLogin(Model model) {
@@ -62,7 +62,8 @@ public class LoginController {
                 } else if(roles != null && roles.contains("Estudiante")){
                     return "redirect:/estudiante/informacion";
                 } else if(roles != null && roles.contains("Docente")){
-
+                    // Redirige al controlador de Docente
+                    return "redirect:/docente/informacion";
                 } else if(roles != null && roles.contains("PersonalAdministrativo")){
 
                 }
