@@ -65,10 +65,11 @@
                             <td><c:out value="${curso.modalidad}"/></td>
                             <td><c:out value="${curso.vacacional ? 'Sí' : 'No'}"/></td>
                             <td>
-                                <button class="action-button">
+                                <a href="<c:url value='/docente/curso/${curso.id}/estudiantes'/>" class="action-button">
                                     Ver Estudiantes
-                                </button>
+                                </a>
                             </td>
+
                         </tr>
                     </c:forEach>
                     </tbody>

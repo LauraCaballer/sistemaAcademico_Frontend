@@ -69,4 +69,40 @@ public class DocenteAsignacionController {
         model.addAttribute("cursos", cursos);
         return "docente_cursos";
     }
+
+
+
+
+
+    @GetMapping("/curso/{cursoId}/estudiantes")
+
+    public String mostrarEstudiantesPorCurso(Long cursoId, HttpSession session, Model model) {
+        LoginResponse login = (LoginResponse) session.getAttribute("username");
+        if (login == null || login.getToken() == null) {
+            return "redirect:/login";
+        }
+
+        Long docenteId = login.getPersonaId();
+        String url = ASIGNACIONES_API + "/docente/" + docenteId + "/curso/" + cursoId + "/estudiantes";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(login.getToken());
+        HttpEntity<Void> request = new HttpEntity<>(headers);
+
+        try {
+            ResponseEntity<List> response = restTemplate.exchange(
+                    url,
+                    HttpMethod.GET,
+                    request,
+                    new ParameterizedTypeReference<>() {}
+            );
+            model.addAttribute("estudiantes", response.getBody());
+        } catch (Exception e) {
+            model.addAttribute("error", "No se pudo cargar la lista de estudiantes.");
+            model.addAttribute("estudiantes", Collections.emptyList());
+        }
+
+        return "docente_estudiantes";
+    }
+
 }
