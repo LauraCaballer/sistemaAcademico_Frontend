@@ -26,9 +26,9 @@ public class EstudianteCursoController { // Puedes usar este controlador o crear
     private static final Logger logger = LoggerFactory.getLogger(EstudianteCursoController.class);
 
     // URLs de tu API backend
-    private final String ESTUDIANTE_API_URL = "http://localhost:8080/estudiantes"; // Backend EstudianteController
-    private final String ESTUDIANTE_CURSO_API_URL = "http://localhost:8080/estudiante-cursos"; // Backend EstudianteCursoController
-    private final String HISTORIAL_API_URL = "http://localhost:8080/historial";
+    private final String ESTUDIANTE_API_URL = "http://localhost:8081/estudiantes"; // Backend EstudianteController
+    private final String ESTUDIANTE_CURSO_API_URL = "http://localhost:8081/estudiante-cursos"; // Backend EstudianteCursoController
+    private final String HISTORIAL_API_URL = "http://localhost:8081/historial";
 
     @Autowired
     private RestTemplate restTemplate;

@@ -134,4 +134,12 @@ public class Curso {
         this.vacacional = vacacional;
     }
 
+    // Nueva propiedad para el docente
+    private Docente docente;
+    public Docente getDocente() {
+        return docente;
+    }
+    public void setDocente(Docente docente) {
+        this.docente = docente;
+    }
 }

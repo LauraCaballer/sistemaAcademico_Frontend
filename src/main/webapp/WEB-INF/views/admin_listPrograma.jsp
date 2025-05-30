@@ -17,6 +17,7 @@
         <li class="active"><a href="${pageContext.request.contextPath}/admin/programas">Programas</a></li>
         <li><a href="${pageContext.request.contextPath}/admin/semestres">Semestres</a></li>
         <li><a href="${pageContext.request.contextPath}/admin/mensajes">mensajes</a></li>
+        <li><a href="http://localhost:3000/admin/cursos">Cursos</a></li>
     </ul>
 </nav>
 
