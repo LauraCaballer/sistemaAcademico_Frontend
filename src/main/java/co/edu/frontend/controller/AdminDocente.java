@@ -25,9 +25,9 @@ import java.util.List;
 @RequestMapping("/admin")
 public class AdminDocente {
 
-    private static final String API_BASE = "http://localhost:8080/docentes";
-    private static final String API_PROGRAMAS = "http://localhost:8080/programas";
-    private static final String API_PERSONAS = "http://localhost:8080/personas";
+    private static final String API_BASE = "https://005b-2800-486-e78-6d00-48b9-32c2-f399-b856.ngrok-free.app/docentes";
+    private static final String API_PROGRAMAS = "https://005b-2800-486-e78-6d00-48b9-32c2-f399-b856.ngrok-free.app/programas";
+    private static final String API_PERSONAS = "https://005b-2800-486-e78-6d00-48b9-32c2-f399-b856.ngrok-free.app/personas";
 
     private final RestTemplate rest;
 

@@ -26,9 +26,9 @@ public class EstudianteCursoController { // Puedes usar este controlador o crear
     private static final Logger logger = LoggerFactory.getLogger(EstudianteCursoController.class);
 
     // URLs de tu API backend
-    private final String ESTUDIANTE_API_URL = "http://localhost:8080/estudiantes"; // Backend EstudianteController
-    private final String ESTUDIANTE_CURSO_API_URL = "http://localhost:8080/estudiante-cursos"; // Backend EstudianteCursoController
-    private final String HISTORIAL_API_URL = "http://localhost:8080/historial";
+    private final String ESTUDIANTE_API_URL = "https://005b-2800-486-e78-6d00-48b9-32c2-f399-b856.ngrok-free.app/estudiantes"; // Backend EstudianteController
+    private final String ESTUDIANTE_CURSO_API_URL = "https://005b-2800-486-e78-6d00-48b9-32c2-f399-b856.ngrok-free.app/estudiante-cursos"; // Backend EstudianteCursoController
+    private final String HISTORIAL_API_URL = "https://005b-2800-486-e78-6d00-48b9-32c2-f399-b856.ngrok-free.app/historial";
 
     @Autowired
     private RestTemplate restTemplate;

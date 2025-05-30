@@ -18,7 +18,7 @@ import java.util.List;
 @RequestMapping("/admin")
 public class AdminPrograma {
 
-    private static final String API_BASE = "http://localhost:8080/programas";
+    private static final String API_BASE = "https://005b-2800-486-e78-6d00-48b9-32c2-f399-b856.ngrok-free.app/programas";
     private final RestTemplate rest;
 
     @Autowired

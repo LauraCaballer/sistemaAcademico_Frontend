@@ -17,7 +17,7 @@ import java.util.List;
 
 @Controller
 public class LoginController {
-    private final String AUTH_URL = "http://localhost:8080/api/auth/login";
+    private final String AUTH_URL = "https://005b-2800-486-e78-6d00-48b9-32c2-f399-b856.ngrok-free.app/api/auth/login";
 
     @GetMapping("/login")
     public String mostrarFormularioLogin(Model model) {
@@ -62,7 +62,8 @@ public class LoginController {
                 } else if(roles != null && roles.contains("Estudiante")){
                     return "redirect:/estudiante/informacion";
                 } else if(roles != null && roles.contains("Docente")){
-
+                    // Redirige al controlador de Docente
+                    return "redirect:/docente/informacion";
                 } else if(roles != null && roles.contains("PersonalAdministrativo")){
 
                 }
@@ -73,7 +74,7 @@ public class LoginController {
         } catch (HttpClientErrorException.Unauthorized e) {
             model.addAttribute("error", "Usuario o clave incorrectos");
         } catch (Exception e) {
-            model.addAttribute("error", "Error al contactar el microservicio");
+                model.addAttribute("error", "Error al contactar el microservicio");
         }
 
         return "login";

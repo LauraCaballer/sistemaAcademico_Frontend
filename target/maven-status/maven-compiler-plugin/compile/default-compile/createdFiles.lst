@@ -24,6 +24,7 @@ co\edu\frontend\controller\AdminDocente.class
 co\edu\frontend\controller\AdminForo.class
 co\edu\frontend\controller\EstudianteController.class
 co\edu\frontend\model\Curso.class
+co\edu\frontend\controller\AdminEstudiante$1.class
 co\edu\frontend\model\EstudianteCurso.class
 co\edu\frontend\model\Asignatura.class
 co\edu\frontend\model\RecursoRaw.class
